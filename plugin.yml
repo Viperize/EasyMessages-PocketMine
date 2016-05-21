@@ -1,0 +1,22 @@
+name: EasyMessages
+main: easymessages\EasyMessages
+version: 1.3.0
+api: 2.0.0
+load: POSTWORLD
+author: Gamecrafter
+description: Send messages to your players with ease!
+website: https://github.com/Viperize/EasyMessages-PocketMine
+permissions:
+ easymessages:
+  default: op
+  children:
+   easymessages.action:
+    default: op
+    children:
+     easymessages.action.color:
+      default: op
+   easymessages.command:
+    default: op
+    children:
+     easymessages.command.easymessages:
+      default: op
