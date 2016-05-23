@@ -84,7 +84,7 @@ class Utils{
     public static function getInterval($type, $interval = 1){
         switch(strtolower($type)){
             case "auto":
-                return $interval;
+                return $interval * 20;
             case "blinking":
                 return 30;
             case "infinite":
