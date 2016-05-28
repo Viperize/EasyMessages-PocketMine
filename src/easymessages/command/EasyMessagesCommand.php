@@ -100,6 +100,7 @@ class EasyMessagesCommand extends Command{
                         $sender->sendMessage(TextFormat::RED."Please specify a recipient.");
                     }
                     return true;
+                //TODO: Remove due to tips being deprecated as of MCPE v0.14.0
                 case "t":
                 case "tip":
                     if(isset($args[1])){

@@ -6,7 +6,7 @@ use easymessages\command\EasyMessagesCommand;
 use easymessages\event\EasyMessagesListener;
 use easymessages\task\SendMessageTask;
 use easymessages\task\SendPopupTask;
-use easymessages\task\SendTipTask;
+use easymessages\task\SendTipTask; //TODO: Remove due to tips being deprecated as of MCPE v0.14.0
 use easymessages\task\UpdateMotdTask;
 use easymessages\utils\Utils;
 use pocketmine\plugin\PluginBase;

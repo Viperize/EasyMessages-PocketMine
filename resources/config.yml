@@ -38,7 +38,7 @@ popup:
  scrollingMessage: "This is a scrolling popup."
  #Scrolling tip will only be sent if displayType is set to scrolling
 tip:
-#I'm planning to remove tip, due to it being deprecated as of MCPE v0.14.0
+#TODO: Remove due to tips being deprecated as of MCPE v0.14.0
  displayType: infinite
  #Sets how the tip is sent to player, four options: auto, blinking, infinite, scrolling
  interval: 30

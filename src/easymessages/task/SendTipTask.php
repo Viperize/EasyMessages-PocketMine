@@ -6,7 +6,7 @@ use easymessages\utils\Utils;
 use easymessages\EasyMessages;
 use pocketmine\scheduler\PluginTask;
 
-//TODO: Remove tip, due to it being deprecated as of MCPE v0.14.0
+//TODO: Remove due to tips being deprecated as of MCPE v0.14.0
 class SendTipTask extends PluginTask{
     /** @var EasyMessages */
     private $plugin;
