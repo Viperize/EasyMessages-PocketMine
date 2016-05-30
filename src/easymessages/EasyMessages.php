@@ -28,6 +28,7 @@ class EasyMessages extends PluginBase{
         else{
             $this->getServer()->getNetwork()->setName($this->getConfig()->getNested("motd.staticMotd"));
         }
+        $this->setScrollingPopup($this->getConfig()->getNested("popup.scrollingMessage"));
     }
     /**
      * @return string
