@@ -27,8 +27,7 @@ class EasyMessagesCommand extends Command{
             "help" => "Shows all EasyMessages commands",
             "message" => "Sends a message",
             "motd" => "Sets the server motd",
-            "popup" => "Sends a popup",
-            "tip" => "Sends a tip"
+            "popup" => "Sends a popup"
         ];
         $sender->sendMessage("EasyMessages commands:");
         foreach($commands as $name => $description){
@@ -49,7 +48,7 @@ class EasyMessagesCommand extends Command{
             switch(strtolower($args[0])){
                 case "help":
                     $this->sendCommandHelp($sender);
-                    return true;
+                    break;
                 case "m":
                 case "message":
                     if(isset($args[1])){
@@ -63,13 +62,13 @@ class EasyMessagesCommand extends Command{
                             $sender->sendMessage(TextFormat::GREEN."Sent message to ".$player->getName().".");
                         }
                         else{
-                            $sender->sendMessage(TextFormat::RED."Failed to send message due to invalid recipient(s).");
+                            $sender->sendMessage(TextFormat::RED."Failed to send message due to invalid recipient(s) specified.");
                         }
                     }
                     else{
                         $sender->sendMessage(TextFormat::RED."Please specify a recipient.");
                     }
-                    return true;
+                    break;
                 case "motd":
                     if(isset($args[1])){
                         $motd = Utils::replaceSymbols(implode(" ", array_slice($args, 1)));
@@ -79,13 +78,13 @@ class EasyMessagesCommand extends Command{
                     else{
                         $sender->sendMessage(TextFormat::GREEN."Current server motd: ".TextFormat::RESET.$sender->getServer()->getNetwork()->getName());
                     }
-                    return true;
+                    break;
                 case "p":
                 case "popup":
                     if(isset($args[1])){
                         $popup = Utils::replaceSymbols(implode(" ", array_slice($args, 2)));
                         if(strtolower($args[1]) === "@all"){
-                            $this->plugin->broadcastPopup($popup);
+                            $sender->getServer()->broadcastPopup($popup);
                             $sender->sendMessage(TextFormat::GREEN."Sent popup to @all.");
                         }
                         elseif($player = $sender->getServer()->getPlayer($args[1])){
@@ -93,42 +92,22 @@ class EasyMessagesCommand extends Command{
                             $sender->sendMessage(TextFormat::GREEN."Sent popup to ".$player->getName().".");
                         }
                         else{
-                            $sender->sendMessage(TextFormat::RED."Failed to send message due to invalid recipient(s).");
+                            $sender->sendMessage(TextFormat::RED."Failed to send message due to invalid recipient(s) specified.");
                         }
                     }
                     else{
                         $sender->sendMessage(TextFormat::RED."Please specify a recipient.");
                     }
-                    return true;
-                //TODO: Remove due to tips being deprecated as of MCPE v0.14.0
-                case "t":
-                case "tip":
-                    if(isset($args[1])){
-                        $tip = Utils::replaceSymbols(implode(" ", array_slice($args, 2)));
-                        if(strtolower($args[1]) === "@all"){
-                            $this->plugin->broadcastTip($tip);
-                            $sender->sendMessage(TextFormat::GREEN."Sent tip to @all.");
-                        }
-                        elseif($player = $sender->getServer()->getPlayer($args[1])){
-                            $player->sendTip($tip);
-                            $sender->sendMessage(TextFormat::GREEN."Sent tip to ".$player->getName().".");
-                        }
-                        else{
-                            $sender->sendMessage(TextFormat::RED."Failed to send message due to invalid recipient(s).");
-                        }
-                    }
-                    else{
-                        $sender->sendMessage(TextFormat::RED."Please specify a recipient.");
-                    }
-                    return true;
+                    break;
                 default:
                     $sender->sendMessage("Usage: /easymessages <sub-command> [parameters]");
-                    return false;
+                    break;
             }
         }
         else{
             $this->sendCommandHelp($sender);
             return false;
         }
+        return true;
     }
 }

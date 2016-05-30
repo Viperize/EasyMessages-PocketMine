@@ -11,7 +11,6 @@ Main command: **easymessages**, **em**
 |**message**, **m**|Sends a message|
 |**motd**|Sets the server motd|
 |**popup**, **p**|Sends a popup|
-|**tip**, **t**|Sends a tip|
 
 ###Permissions:
 |Node|Default|

@@ -22,21 +22,21 @@ class SendPopupTask extends PluginTask{
     public function onRun($currentTick){
         switch($this->type){
             case "auto":
-                $this->plugin->broadcastPopup(Utils::getRandom($this->plugin->getConfig()->getNested("popup.autoMessages")));
+                $this->plugin->getServer()->broadcastPopup(Utils::getRandom($this->plugin->getConfig()->getNested("popup.autoMessages")));
                 break;
             case "blinking":
-                $this->plugin->broadcastPopup($this->plugin->getConfig()->getNested("popup.blinkingMessage"));
+                $this->plugin->getServer()->broadcastPopup($this->plugin->getConfig()->getNested("popup.blinkingMessage"));
                 break;
             case "infinite":
-                $this->plugin->broadcastPopup($this->plugin->getConfig()->getNested("popup.infiniteMessage"));
+                $this->plugin->getServer()->broadcastPopup($this->plugin->getConfig()->getNested("popup.infiniteMessage"));
                 break;
             case "scrolling":
                 $popup = $this->plugin->getScrollingPopup();
-                $this->plugin->broadcastPopup($popup);
+                $this->plugin->getServer()->broadcastPopup($popup);
                 $this->plugin->setScrollingPopup(Utils::next($popup));
                 break;
             default:
-                //For some reason PocketMine doesn't cancel the task, I'll comment out the log message to prevent console spam
+                //For some reason the task doesn't cancel, I'll comment out the log message to prevent console spam
                 //$this->plugin->getServer()->getLogger()->notice("Invalid type set in popup.displayType, stopping task...");
                 $this->plugin->getServer()->getScheduler()->cancelTask($this->getTaskId());
                 break;
