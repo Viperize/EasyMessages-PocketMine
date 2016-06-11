@@ -19,8 +19,8 @@ class UpdateMotdTask extends PluginTask{
      * @param int $currentTick
      */
     public function onRun($currentTick){
-        //TODO: Optimize code
-        $this->plugin->getServer()->getNetwork()->setName(str_replace(
+        $server = $this->plugin->getServer();
+        $server->getNetwork()->setName(str_replace(
             [
                 "{SERVER_API_VERSION}",
                 "{SERVER_CODENAME}",
@@ -40,22 +40,22 @@ class UpdateMotdTask extends PluginTask{
                 "{SERVER_VERSION}"
             ],
             [
-                $this->plugin->getServer()->getApiVersion(),
-                $this->plugin->getServer()->getCodename(),
-                $this->plugin->getServer()->getDefaultLevel()->getName(),
-                $this->plugin->getServer()->getIp(),
-                $this->plugin->getServer()->getLanguage()->getName(),
-                $this->plugin->getServer()->getMaxPlayers(),
-                $this->plugin->getServer()->getMotd(),
-                $this->plugin->getServer()->getName(),
-                count($this->plugin->getServer()->getOnlinePlayers()),
-                $this->plugin->getServer()->getPocketMineVersion(),
-                $this->plugin->getServer()->getPort(),
-                $this->plugin->getServer()->getTickUsage(),
-                $this->plugin->getServer()->getTickUsageAverage(),
-                $this->plugin->getServer()->getTicksPerSecond(),
-                $this->plugin->getServer()->getTicksPerSecondAverage(),
-                $this->plugin->getServer()->getVersion()
+                $server->getApiVersion(),
+                $server->getCodename(),
+                $server->getDefaultLevel()->getName(),
+                $server->getIp(),
+                $server->getLanguage()->getName(),
+                $server->getMaxPlayers(),
+                $server->getMotd(),
+                $server->getName(),
+                count($server->getOnlinePlayers()),
+                $server->getPocketMineVersion(),
+                $server->getPort(),
+                $server->getTickUsage(),
+                $server->getTickUsageAverage(),
+                $server->getTicksPerSecond(),
+                $server->getTicksPerSecondAverage(),
+                $server->getVersion()
             ],
             $this->plugin->getConfig()->getNested("motd.dynamicMotd")
         ));

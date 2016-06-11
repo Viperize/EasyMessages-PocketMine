@@ -12,7 +12,7 @@ use pocketmine\plugin\PluginBase;
 
 class EasyMessages extends PluginBase{
     /** @var string */
-    private $scrollingPopup = "";
+    private $scrollingPopup;
     public function onEnable(){
         $this->saveDefaultConfig();
         $this->saveResource("values.txt");
