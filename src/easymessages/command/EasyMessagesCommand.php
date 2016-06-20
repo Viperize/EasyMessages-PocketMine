@@ -31,7 +31,7 @@ class EasyMessagesCommand extends Command{
         ];
         $sender->sendMessage("EasyMessages commands:");
         foreach($commands as $name => $description){
-            $sender->sendMessage("/easymessages ".$name.": ".$description);
+            $sender->sendMessage("/easymessages $name: $description");
         }
     }
     /**
